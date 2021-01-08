@@ -1,4 +1,5 @@
-version: "3.8"
+version: '3.8'
+
 volumes:
   docker-volume:
 
@@ -6,7 +7,7 @@ services:
   web:
     image: nginx:1.18
     ports:
-      - "8000:80"
+      - '8000:80'
     depends_on:
       - app
     volumes:
