@@ -1,21 +1,9 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">I'm an example component.</div>
-                </div>
-            </div>
+    <div class="container-fluid bg-dark mb-3">
+        <div class="container">
+            <nav class="navbar navbar-dark">
+                <a class="navbar-brand mb-0 h1" href="">Home</a>
+            </nav>
         </div>
     </div>
 </template>
-
-<script>
-export default {
-    mounted() {
-        console.log("勇太");
-    },
-};
-</script>
