@@ -10,4 +10,9 @@ class Blog extends Model
         'user_id',
         'content',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

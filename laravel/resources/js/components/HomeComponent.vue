@@ -12,16 +12,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="user in users" :key="user.id">
-                    <th scope="row">{{ user.id }}</th>
-                    <td>{{ user.name }}</td>
-                    <td>{{ user.content }}</td>
+                <tr v-for="blog in blogs" :key="blog.id">
+                    <th scope="row">{{ blog.id }}</th>
+                    <td>{{ blog.user.name }}</td>
+                    <td>{{ blog.content }}</td>
                     <td>
                         <router-link
                             class="btn btn-primary"
                             v-bind:to="{
                                 name: 'show',
-                                params: { id: user.id },
+                                params: { id: blog.id },
                             }"
                         >
                             詳細
@@ -32,7 +32,7 @@
                             class="btn btn-success"
                             v-bind:to="{
                                 name: 'edit',
-                                params: { id: user.id },
+                                params: { id: blog.id },
                             }"
                         >
                             編集
@@ -49,24 +49,18 @@
 export default {
     data: function () {
         return {
-            users: [
-                {
-                    id: 1,
-                    name: "山田 一郎",
-                    content: "テスト1",
-                },
-                {
-                    id: 2,
-                    name: "山田 二郎",
-                    content: "テスト2",
-                },
-                {
-                    id: 3,
-                    name: "山田 三郎",
-                    content: "テスト3",
-                },
-            ],
+            blogs: [],
         };
+    },
+    methods: {
+        getBlogs() {
+            axios.get("/api").then((response) => {
+                this.blogs = response.data;
+            });
+        },
+    },
+    mounted() {
+        this.getBlogs();
     },
 };
 </script>

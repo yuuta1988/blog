@@ -2064,20 +2064,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      users: [{
-        id: 1,
-        name: "山田 一郎",
-        content: "テスト1"
-      }, {
-        id: 2,
-        name: "山田 二郎",
-        content: "テスト2"
-      }, {
-        id: 3,
-        name: "山田 三郎",
-        content: "テスト3"
-      }]
+      blogs: []
     };
+  },
+  methods: {
+    getBlogs: function getBlogs() {
+      var _this = this;
+
+      axios.get("/api").then(function (response) {
+        _this.blogs = response.data;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getBlogs();
   }
 });
 
@@ -37925,13 +37925,13 @@ var render = function() {
       _vm._v(" "),
       _c(
         "tbody",
-        _vm._l(_vm.users, function(user) {
-          return _c("tr", { key: user.id }, [
-            _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(user.id))]),
+        _vm._l(_vm.blogs, function(blog) {
+          return _c("tr", { key: blog.id }, [
+            _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(blog.id))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(user.name))]),
+            _c("td", [_vm._v(_vm._s(blog.user.name))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(user.content))]),
+            _c("td", [_vm._v(_vm._s(blog.content))]),
             _vm._v(" "),
             _c(
               "td",
@@ -37943,7 +37943,7 @@ var render = function() {
                     attrs: {
                       to: {
                         name: "show",
-                        params: { id: user.id }
+                        params: { id: blog.id }
                       }
                     }
                   },
@@ -37967,7 +37967,7 @@ var render = function() {
                     attrs: {
                       to: {
                         name: "edit",
-                        params: { id: user.id }
+                        params: { id: blog.id }
                       }
                     }
                   },

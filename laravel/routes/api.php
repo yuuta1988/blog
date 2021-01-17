@@ -14,3 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', 'BlogController@index');
+Route::post('/', 'BlogController@store');
+Route::get('/{blog}', 'BlogController@show');
+Route::put('/{blog}', 'BlogController@update');
+Route::delete('/{blog}', 'BlogController@destroy');
