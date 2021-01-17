@@ -2064,20 +2064,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      users: [{
-        id: 1,
-        name: "山田 一郎",
-        content: "テスト1"
-      }, {
-        id: 2,
-        name: "山田 二郎",
-        content: "テスト2"
-      }, {
-        id: 3,
-        name: "山田 三郎",
-        content: "テスト3"
-      }]
+      blogs: []
     };
+  },
+  methods: {
+    getBlogs: function getBlogs() {
+      var _this = this;
+
+      axios.get("/api").then(function (response) {
+        _this.blogs = response.data;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getBlogs();
   }
 });
 
@@ -37925,13 +37925,13 @@ var render = function() {
       _vm._v(" "),
       _c(
         "tbody",
-        _vm._l(_vm.users, function(user) {
-          return _c("tr", { key: user.id }, [
-            _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(user.id))]),
+        _vm._l(_vm.blogs, function(blog) {
+          return _c("tr", { key: blog.id }, [
+            _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(blog.id))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(user.name))]),
+            _c("td", [_vm._v(_vm._s(blog.user.name))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(user.content))]),
+            _c("td", [_vm._v(_vm._s(blog.content))]),
             _vm._v(" "),
             _c(
               "td",
@@ -37943,7 +37943,7 @@ var render = function() {
                     attrs: {
                       to: {
                         name: "show",
-                        params: { id: user.id }
+                        params: { id: blog.id }
                       }
                     }
                   },
@@ -37967,7 +37967,7 @@ var render = function() {
                     attrs: {
                       to: {
                         name: "edit",
-                        params: { id: user.id }
+                        params: { id: blog.id }
                       }
                     }
                   },
@@ -53362,7 +53362,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_HeaderComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/HeaderComponent */ "./resources/js/components/HeaderComponent.vue");
 /* harmony import */ var _components_HomeComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/HomeComponent */ "./resources/js/components/HomeComponent.vue");
 /* harmony import */ var _components_CreateComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/CreateComponent */ "./resources/js/components/CreateComponent.vue");
-/* harmony import */ var _components_EditComponent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/EditComponent */ "./resources/js/components/EditComponent.vue");
+/* harmony import */ var _components_EditComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/EditComponent */ "./resources/js/components/EditComponent.vue");
 /* harmony import */ var _components_ShowComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/ShowComponent */ "./resources/js/components/ShowComponent.vue");
 
 
@@ -53388,7 +53388,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   }, {
     path: '/:id/edit',
     name: 'edit',
-    component: _components_EditComponent__WEBPACK_IMPORTED_MODULE_6__["default"],
+    component: _components_EditComponent__WEBPACK_IMPORTED_MODULE_4__["default"],
     props: true
   }, {
     path: ':id',
@@ -53866,8 +53866,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/html/laravel/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/html/laravel/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/yuuta/Desktop/Git/blog/laravel/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/yuuta/Desktop/Git/blog/laravel/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
