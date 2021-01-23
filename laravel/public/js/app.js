@@ -1969,6 +1969,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CreateForm",
+  methods: {
+    create: function create(form) {
+      var _this = this;
+
+      axios.post("/api", form).then(function (response) {
+        _this.$router.push({
+          name: "home"
+        });
+      });
+    }
+  },
   components: {
     BaseFormComponent: _BaseFormComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
@@ -2014,8 +2025,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -37817,7 +37826,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("base-form-component")
+  return _c("base-form-component", { on: { submit: _vm.create } })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37929,8 +37938,6 @@ var render = function() {
           return _c("tr", { key: blog.id }, [
             _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(blog.id))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(blog.user.name))]),
-            _vm._v(" "),
             _c("td", [_vm._v(_vm._s(blog.content))]),
             _vm._v(" "),
             _c(
@@ -37997,8 +38004,6 @@ var staticRenderFns = [
     return _c("thead", { staticClass: "thead-light" }, [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("投稿者")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("内容")]),
         _vm._v(" "),

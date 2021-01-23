@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class BlogController extends Controller
 {
     public function index()
     {
-        return Blog::with('user')->get();
+        return Blog::all();
     }
 
     public function store(Request $request)
