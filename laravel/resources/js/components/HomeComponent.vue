@@ -4,7 +4,6 @@
             <thead class="thead-light">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">投稿者</th>
                     <th scope="col">内容</th>
                     <th scope="col">詳細</th>
                     <th scope="col">編集</th>
@@ -14,7 +13,6 @@
             <tbody>
                 <tr v-for="blog in blogs" :key="blog.id">
                     <th scope="row">{{ blog.id }}</th>
-                    <td>{{ blog.user.name }}</td>
                     <td>{{ blog.content }}</td>
                     <td>
                         <router-link
