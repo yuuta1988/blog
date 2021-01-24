@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <h4>{{ title }}</h4>
         <div class="row justify-content-center">
             <div class="col-sm-6">
                 <form @submit.prevent="submit">
@@ -11,9 +12,10 @@
                             type="text"
                             class="col-sm-9 form-control"
                             id="content"
-                            v-model="form.content"
+                            v-model="initialBlog.content"
                         />
                     </div>
+                    {{ initialBlog }}
                     <button type="submit" class="btn btn-primary">送信</button>
                 </form>
             </div>
@@ -25,19 +27,18 @@
 export default {
     name: "BsaeForm",
     props: {
-        initialContent: String,
-    },
-    data() {
-        return {
-            form: {
-                content: this.initialContent,
-            },
-        };
-    },
-    methods: {
-        submit: function () {
-            this.$emit("submit", this.form);
+        initialBlog: {
+            type: Object,
+            required: false,
         },
+        title: String,
     },
+    // data() {
+    //     return {
+    //         form: {
+    //             content: this.initialBlog.content,
+    //         },
+    //     };
+    // },
 };
 </script>
