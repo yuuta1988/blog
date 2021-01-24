@@ -36,7 +36,14 @@
                             編集
                         </router-link>
                     </td>
-                    <td><button class="btn btn-danger">削除</button></td>
+                    <td>
+                        <button
+                            class="btn btn-danger"
+                            v-on:click="deleteBlog(blog.id)"
+                        >
+                            削除
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -54,6 +61,11 @@ export default {
         getBlogs() {
             axios.get("/api").then((response) => {
                 this.blogs = response.data;
+            });
+        },
+        deleteBlog(id) {
+            axios.delete("/api/" + id).then((response) => {
+                this.getBlogs();
             });
         },
     },
