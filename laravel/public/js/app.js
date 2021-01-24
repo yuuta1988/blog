@@ -2076,6 +2076,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2088,6 +2095,13 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api").then(function (response) {
         _this.blogs = response.data;
+      });
+    },
+    deleteBlog: function deleteBlog(id) {
+      var _this2 = this;
+
+      axios["delete"]("/api/" + id).then(function (response) {
+        _this2.getBlogs();
       });
     }
   },
@@ -38030,7 +38044,20 @@ var render = function() {
               1
             ),
             _vm._v(" "),
-            _vm._m(1, true)
+            _c("td", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger",
+                  on: {
+                    click: function($event) {
+                      return _vm.deleteBlog(blog.id)
+                    }
+                  }
+                },
+                [_vm._v("\n                        削除\n                    ")]
+              )
+            ])
           ])
         }),
         0
@@ -38055,14 +38082,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("削除")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-danger" }, [_vm._v("削除")])
     ])
   }
 ]
